@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { UserController } from './users.controller';
 import { UserService } from './users.service';
 import { KindagooseModule } from 'kindagoose';
@@ -6,6 +6,7 @@ import { User } from './models/user.model';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
+import { LoggerMiddleware } from './logger';
 
 @Module({
   imports: [
@@ -40,4 +41,10 @@ import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
     },
   ],
 })
-export class AppModule { }
+export class AppModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: '*', method: RequestMethod.ALL });
+  }
+}
