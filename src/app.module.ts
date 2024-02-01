@@ -3,6 +3,8 @@ import { UserController } from './users.controller';
 import { UserService } from './users.service';
 import { KindagooseModule } from 'kindagoose';
 import { User } from './models/user.model';
+import { HttpExceptionFilter } from './filters/http-exception.filter';
+import { APP_FILTER } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -17,6 +19,13 @@ import { User } from './models/user.model';
     ]),
   ],
   controllers: [UserController],
-  providers: [UserService],
+  providers: [
+    UserService,
+
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ],
 })
-export class AppModule {}
+export class AppModule { }

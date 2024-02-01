@@ -64,4 +64,11 @@ export class UserResponseDto {
         type: UserDto,
     })
     data: UserDto[]
+
+    @ApiProperty({
+        description: "The error message. This field is only set if there was an error",
+        required: false,
+        example: "Invalid user ID",
+    })
+    error?: string;
 }
