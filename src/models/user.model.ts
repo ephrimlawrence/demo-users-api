@@ -2,7 +2,7 @@ import { modelOptions, prop } from '@typegoose/typegoose';
 
 @modelOptions({
   schemaOptions: {
-    collection: 'Users',
+    collection: 'users',
     toJSON: {
       transform(doc, ret, options) {
         // Remove the password property when serializing doc to JSON
@@ -14,6 +14,9 @@ import { modelOptions, prop } from '@typegoose/typegoose';
   }
 })
 export class User {
+  @prop({ _id: true })
+  id: string;
+
   @prop()
   firstName: string;
 
