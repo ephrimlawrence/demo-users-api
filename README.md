@@ -62,6 +62,6 @@ The API uses the [NestJS Exception Filters](https://docs.nestjs.com/exception-fi
 
 Update [src/filters/http-exception.filter.ts](src/filters/http-exception.filter.ts) file, line `34` to send errors to external services like Slack or Sentry.
 
-## Loggging
+## Logging
 
 The API uses the custom logger midilleware to log all requests to console. The log file is located at `src/logger.ts`.
