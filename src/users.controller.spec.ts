@@ -60,11 +60,11 @@ describe('UserController', () => {
 
     });
 
-    it('should throw error if user not found', async () => {
+    it('should throw user not found error', async () => {
       await expect(userController.getUser(faker.database.mongodbObjectId())).rejects.toThrow('User not found');
     });
 
-    it("should throw 'Invalid user ID' error if user ID is invalid", async () => {
+    it("should throw 'Invalid user ID' error", async () => {
       await expect(userController.getUser('123')).rejects.toThrow('Invalid user ID');
     });
   });
