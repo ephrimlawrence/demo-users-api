@@ -6,6 +6,12 @@ import { User } from './models/user.model';
 
 @Module({
   imports: [
+
+    //! NOTE: Recommended to use environment variables here. This is just for demonstration purposes.
+    KindagooseModule.forRoot('mongodb://localhost:27017', {
+      dbName: 'test',
+    }),
+
     KindagooseModule.forFeature([
       User,
     ]),

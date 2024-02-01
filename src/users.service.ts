@@ -12,6 +12,10 @@ export class UserService {
     private readonly userModel: ReturnModelType<typeof User>,
   ) { }
 
+
+  /**
+   * Returns a user from the database
+   */
   async getUser(id: string): Promise<User> {
     if (!isMongoId(id)) {
       throw new BadRequestException("Invalid user ID");

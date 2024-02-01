@@ -61,6 +61,7 @@ export class UserResponseDto {
         description: "The user's data. To make the response consistent, this is always an array, even if only one user is returned",
         required: true,
         isArray: true,
+        type: UserDto,
     })
     data: UserDto[]
 }
